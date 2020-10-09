@@ -54,7 +54,7 @@ void rotateImage(const char *inputFilename, const char *outputFilename, JXFORM_C
     jpeg_create_compress(&destObj);
 
     //Set the transformation properties
-    setTransformation(&transformObj, transformVal);
+    setTransformation(&transformObj, rotationVal);
 
 	//Specifing source of decompression obj
     jpeg_stdio_src(&srcObj, inputFile);
