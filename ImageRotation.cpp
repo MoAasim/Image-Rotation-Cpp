@@ -123,7 +123,7 @@ void rotateImage(const char *inputFilename, const char *outputFilename, JXFORM_C
 
 void usage(){
 	std::cout<<"---------------- USAGE ----------------\n";
-    std::cout<<"1 arg: JPEG image name to be rotated\n";
+	std::cout<<"1 arg: JPEG image name to be rotated\n";
 	std::cout<<"2 arg: Name of output image\n";
 	std::cout<<"3 arg: value of rotation 90/180/270\n";
 	std::cout<<"----------------------------------------\n";	
@@ -138,7 +138,6 @@ int main(int argc, char *argv[]){
         return -1;
     }
 
-    std::cout<<"--------------------- STRAT ROTATING ------------------------\n";
 	int val = atoi(argv[3]);
     JXFORM_CODE rotate;
     switch(val){
@@ -156,9 +155,10 @@ int main(int argc, char *argv[]){
 			usage();
             return -1;
     }
-	
-    rotateImage(argv[1], argv[2], rotate);
-    std::cout<<"-------------------------- DONE -----------------------------\n";
+
+	std::cout<<"--------------------- STRAT ROTATING ------------------------\n";
+	rotateImage(argv[1], argv[2], rotate);
+	std::cout<<"-------------------------- DONE -----------------------------\n";
 
     return 0;
 }
