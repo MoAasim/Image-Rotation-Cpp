@@ -1,3 +1,10 @@
+/**
+ * @author: Mohammad Aasim
+ *
+ * Anyone can use it freely with or without changing as per the need.
+ *  
+ */
+
 
 #include <iostream>
 
@@ -114,20 +121,43 @@ void rotateImage(const char *inputFilename, const char *outputFilename, JXFORM_C
     fclose(outputFile);
 }
 
+void usage(){
+	std::cout<<"---------------- USAGE ----------------\n";
+    std::cout<<"1 arg: JPEG image name to be rotated\n";
+	std::cout<<"2 arg: Name of output image\n";
+	std::cout<<"3 arg: value of rotation 90/180/270\n";
+	std::cout<<"----------------------------------------\n";	
+}
+
+
 // Driver program
 int main(int argc, char *argv[]){
     if(argc < 3){
-        std::cerr<<"Please provide the input image and only output image filename\n";
+		std::cerr<<"Please provide all required arguments\n";
+		usage();
         return -1;
     }
 
     std::cout<<"--------------------- STRAT ROTATING ------------------------\n";
-	/* Avalable options for Rotation:
-	 * JXFORM_ROT_90
-	 * JXFORM_ROT_180
-	 * JXFORM_ROT_270
-	 */
-    rotateImage(argv[1], argv[2], JXFORM_ROT_90);
+	int val = atoi(argv[3]);
+    JXFORM_CODE rotate;
+    switch(val){
+        case 90:
+            rotate = JXFORM_ROT_90;
+            break;
+        case 180:
+            rotate = JXFORM_ROT_180;
+            break;
+        case 270:
+            rotate = JXFORM_ROT_270;
+            break;
+        default:
+            std::cout<<"Invalid value of ratation\n";
+			usage();
+            return -1;
+    }
+	
+    rotateImage(argv[1], argv[2], rotate);
     std::cout<<"-------------------------- DONE -----------------------------\n";
 
     return 0;
